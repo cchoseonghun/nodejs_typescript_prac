@@ -1,0 +1,18 @@
+{
+  "include": ["src/**/*.ts"],  
+  // "include": 컴파일할 파일 경로 설정 
+  // [src] 폴더 하위의 모든 .ts 확장자
+  "compilerOptions": {
+    "lib": ["ES2021"], 
+    "esModuleInterop": true, 
+    // "esModuleInterop": 속성이 true일 경우 ES6 모듈 사용
+    "target": "ES2021", 
+    // "rootDir": "src", 
+    // "rootDir": 컴파일될 타입스크립트 코드들의 위치 명시
+    "outDir": "dist", 
+    // "outDir": 컴파일 후 js파일이 생성될 폴더명
+    // "strictNullChecks": true, 
+    // 암시적 any 타입 허용 x
+    "noImplicitAny": true
+  }
+}
