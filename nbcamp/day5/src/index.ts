@@ -1,6 +1,11 @@
 import dotenv from 'dotenv';
 import express, { Request, Response } from 'express';
+import cors from "cors";
+// import helmet from "helmet";
+
 import { itemsRouter } from './items/items.router';
+import { errorHandler } from './middleware/error.middleware';
+import { notFoundHandler } from './middleware/notFound.middleware';
 
 dotenv.config();
 
@@ -14,14 +19,20 @@ const PORT: number = parseInt(process.env.PORT as string, 10);
 
 const app = express();
 
+// app.use(helmet());
+app.use(cors());
+
 app.use(express.json());
 // express.json 내장 미들웨어 사용으로 req body를 JSON 형식으로 분석 가능
 
 app.use('/api/menu/items', itemsRouter);
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hi!!');
-});
+app.use(errorHandler);
+app.use(notFoundHandler);
+
+// app.get('/', (req: Request, res: Response) => {
+//   res.send('Hi!!');
+// });
 
 app.listen(PORT, () => {
   console.log(`Listening on http://localhost:${PORT}`);
