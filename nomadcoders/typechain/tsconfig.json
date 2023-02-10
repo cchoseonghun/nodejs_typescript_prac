@@ -2,10 +2,13 @@
   "include": ["src"],
   "compilerOptions": {
     "outDir": "build",
-    "esModuleInterop": true,
     "target": "ES6",
-    "lib": ["ES6", "DOM"],
+    // "lib": ["ES6", "DOM"],
+    "lib": ["ES6"],  // 브라우저에서 돌아갈 프로그램을 만드는게 아니라 dom 제거
     "strict": true,
-    "allowJs": true
+    // "allowJs": true,  // TypeScript에서 JavaScript 파일을 사용할 수 있다.
+    "esModuleInterop": true,  // es6 모듈 사양을 준수하며 CommonJS 모듈을 가져올 수 있다.
+    // "module": "umd"  // 브라우저 앱을 만들고 있었다면 umd 선택
+    "module": "CommonJS"
   }
 }
